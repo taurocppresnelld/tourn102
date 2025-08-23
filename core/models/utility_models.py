@@ -84,6 +84,7 @@ class InstructTextDatasetType(BaseModel):
 class RewardFunction(BaseModel):
     """Model representing a reward function with its metadata"""
 
+    reward_id: str | None = Field(None, description="UUID of the reward function in the database")
     reward_func: str = Field(
         ...,
         description="String with the python code of the reward function to use",
@@ -101,6 +102,7 @@ class RewardFunction(BaseModel):
 class GrpoDatasetType(BaseModel):
     field_prompt: str | None = None
     reward_functions: list[RewardFunction] | None = []
+    extra_column: str | None = None
 
 
 class DpoDatasetType(BaseModel):
